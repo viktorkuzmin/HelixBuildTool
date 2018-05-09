@@ -1,0 +1,60 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BuildTool.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="RepoLocation" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Dev\</Value>
+    </Setting>
+    <Setting Name="CopyAppFilesComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">gulp 07-Copy-App</Value>
+    </Setting>
+    <Setting Name="PublishAllProjectsComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">gulp 03-Publish-All-Projects</Value>
+    </Setting>
+    <Setting Name="BuildSolutionComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">gulp Build-Solution</Value>
+    </Setting>
+    <Setting Name="PublishFoundationProjectsComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">gulp Publish-Foundation-Projects</Value>
+    </Setting>
+    <Setting Name="PublishFeatureProjectsComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">gulp Publish-Feature-Projects</Value>
+    </Setting>
+    <Setting Name="PublishProjectProjectsComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">gulp Publish-Project-Projects</Value>
+    </Setting>
+    <Setting Name="ApplyXmlTransformComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">gulp 04-Apply-Xml-Transform</Value>
+    </Setting>
+    <Setting Name="SyncUnicornComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">gulp 05-Sync-Unicorn</Value>
+    </Setting>
+    <Setting Name="GitBashPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:/Users/kuzminv-s/AppData/Local/Programs/Git/git-cmd.exe</Value>
+    </Setting>
+    <Setting Name="BuildComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">npm run build</Value>
+    </Setting>
+    <Setting Name="BuildNoDocComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">npm run build-no-doc</Value>
+    </Setting>
+    <Setting Name="CmdPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:/Users/kuzminv-s/AppData/Local/Programs/Git/git-cmd.exe</Value>
+    </Setting>
+    <Setting Name="WindowTop" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="WindowLeft" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="WindowHeight" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">300</Value>
+    </Setting>
+    <Setting Name="WindowState" Type="System.Windows.WindowState" Scope="User">
+      <Value Profile="(Default)">Normal</Value>
+    </Setting>
+    <Setting Name="WindowWidth" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

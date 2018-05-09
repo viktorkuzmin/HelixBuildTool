@@ -1,0 +1,64 @@
+﻿<Window x:Class="BuildTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BuildTool"
+        mc:Ignorable="d"
+		Icon="/images.png"
+        Title="Build Tool" Height="450" Width="800" Closing="Window_Closing">
+	<Grid>
+		<TabControl >
+			<TabItem Header="Run">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="200"/>
+					</Grid.ColumnDefinitions>
+
+					<ScrollViewer x:Name="scvOutputText" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+						<TextBlock 
+							x:Name="tbOutputText" 
+							Background="Black" 
+							Foreground="#cccccc"
+							FontSize="14"/>
+					</ScrollViewer>
+
+					<StackPanel x:Name="spButtonsPanel" Grid.Column="1" Margin="10">
+						
+						<Button  Content="03 Publish All Projects" Margin="0,0,0,10"  Click="PublishAllProjects_Click"/>
+						
+						<StackPanel Margin="40,0,5,5">
+							<Button  Content="Build Solution" Margin="0,0,0,10"  Click="BuildSolution_Click"/>
+							<Button  Content="Publish Foundation Projects" Margin="0,0,0,10"  Click="PublishFoundationProjects_Click"/>
+							<Button  Content="Publish Feature Projects" Margin="0,0,0,10"  Click="PublishFeatureProjects_Click"/>
+							<Button  Content="Publish Project Projects" Margin="0,0,0,10"  Click="PublishProjectProjects_Click"/>
+						</StackPanel>
+
+						<Button  Content="04 Apply Xml Transform" Margin="0,0,0,10"  Click="ApplyXmlTransform_Click"/>
+
+						<Button  Content="05 Sync Unicorn" Margin="0,0,0,10"  Click="SyncUnicorn_Click"/>
+
+						<Button  Content="07 Copy App" Margin="0,0,0,10"  Click="CopyAppFiles_Click"/>
+
+
+						<StackPanel Margin="10, 30, 10, 10">
+
+							<Button  Content="Buld JSX for COMMIT" Margin="0,0,0,10" Click="Build_Click"/>
+
+							<Button  Content="Buld JSX NO DOC" Margin="0,0,0,10" Click="BuildNoDoc_Click"/>
+
+							<Button  Content="WATCH" Margin="0,0,0,10" Click="Watch_Click" />
+
+						</StackPanel>
+						
+					</StackPanel>
+
+				</Grid>
+			</TabItem>
+			<TabItem Header="Settings">
+				<TextBlock>HAVE TO DO</TextBlock>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</Window>
