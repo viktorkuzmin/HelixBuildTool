@@ -35,9 +35,6 @@
     <Setting Name="BuildComand" Type="System.String" Scope="User">
       <Value Profile="(Default)">npm run build</Value>
     </Setting>
-    <Setting Name="BuildNoDocComand" Type="System.String" Scope="User">
-      <Value Profile="(Default)">npm run build-no-doc</Value>
-    </Setting>
     <Setting Name="CmdPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:/Users/kuzminv-s/AppData/Local/Programs/Git/git-cmd.exe</Value>
     </Setting>
@@ -55,6 +52,36 @@
     </Setting>
     <Setting Name="WindowWidth" Type="System.Double" Scope="User">
       <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="CICleanComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CI-Clean</Value>
+    </Setting>
+    <Setting Name="CIPublishFoundationComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Publish-Foundation-Projects</Value>
+    </Setting>
+    <Setting Name="CIPublishFeatureComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Publish-Feature-Projects</Value>
+    </Setting>
+    <Setting Name="CIPublishProjectComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Publish-Project-Projects</Value>
+    </Setting>
+    <Setting Name="CICommandBase" Type="System.String" Scope="User">
+      <Value Profile="(Default)">gulp {0} --gulpfile gulpfile-ci.js</Value>
+    </Setting>
+    <Setting Name="CIDevComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CI-And-Prepare-Files-DEV</Value>
+    </Setting>
+    <Setting Name="CIUatComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CI-And-Prepare-Files-UAT</Value>
+    </Setting>
+    <Setting Name="CIProdComand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CI-And-Prepare-Files-PROD</Value>
+    </Setting>
+    <Setting Name="SrcMainFolders" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Feature, Foundation, Project</Value>
+    </Setting>
+    <Setting Name="PublishProjectCommand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">gulp Publish-Project -m {0}</Value>
     </Setting>
   </Settings>
 </SettingsFile>

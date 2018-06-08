@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Linq;
+using System.Windows.Controls;
 
 namespace BuildTool
 {
@@ -11,7 +15,10 @@ namespace BuildTool
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		readonly string excludeFolder = "App";
 		readonly string solutionPathCommand = string.Format("cd {0}\\vrtp_web\\Site", Properties.Settings.Default.RepoLocation);
+
+		private List<Tuple<string, List<String>>> projectsButtons = new List<Tuple<string, List<String>>>();
 
 		public MainWindow()
 		{
@@ -24,77 +31,8 @@ namespace BuildTool
 			this.Top = userPrefs.WindowTop;
 			this.Left = userPrefs.WindowLeft;
 			this.WindowState = userPrefs.WindowState;
-		}
 
-		private void PublishAllProjects_Click(object sender, RoutedEventArgs e)
-		{
-			DisableButtons();
-			tbOutputText.Text = string.Empty;
-			Run(Properties.Settings.Default.PublishAllProjectsComand);
-		}
-
-		private void BuildSolution_Click(object sender, RoutedEventArgs e)
-		{
-			DisableButtons();
-			tbOutputText.Text = string.Empty;
-			Run(Properties.Settings.Default.BuildSolutionComand);
-		}
-
-		private void PublishFoundationProjects_Click(object sender, RoutedEventArgs e)
-		{
-			DisableButtons();
-			tbOutputText.Text = string.Empty;
-			Run(Properties.Settings.Default.PublishFoundationProjectsComand);
-		}
-
-		private void PublishFeatureProjects_Click(object sender, RoutedEventArgs e)
-		{
-			DisableButtons();
-			tbOutputText.Text = string.Empty;
-			Run(Properties.Settings.Default.PublishFeatureProjectsComand);
-		}
-		
-		private void PublishProjectProjects_Click(object sender, RoutedEventArgs e)
-		{
-			DisableButtons();
-			tbOutputText.Text = string.Empty;
-			Run(Properties.Settings.Default.PublishProjectProjectsComand);
-		}
-
-		private void CopyAppFiles_Click(object sender, RoutedEventArgs e)
-		{
-			DisableButtons();
-			tbOutputText.Text = string.Empty;
-			Run(Properties.Settings.Default.CopyAppFilesComand);
-		}
-
-		private void ApplyXmlTransform_Click(object sender, RoutedEventArgs e)
-		{
-			DisableButtons();
-			tbOutputText.Text = string.Empty;
-			Run(Properties.Settings.Default.ApplyXmlTransformComand);
-		}
-
-		private void SyncUnicorn_Click(object sender, RoutedEventArgs e)
-		{
-			DisableButtons();
-			tbOutputText.Text = string.Empty;
-			Run(Properties.Settings.Default.SyncUnicornComand);
-		}
-
-		private void Build_Click(object sender, RoutedEventArgs e)
-		{
-			DisableButtons();
-			tbOutputText.Text = string.Empty;
-			Run(Properties.Settings.Default.BuildComand);
-
-		}
-
-		private void BuildNoDoc_Click(object sender, RoutedEventArgs e)
-		{
-			DisableButtons();
-			tbOutputText.Text = string.Empty;
-			Run(Properties.Settings.Default.BuildNoDocComand);
+			CreateProjectButtons();
 		}
 
 		public void Watch_Click(object sender, RoutedEventArgs e)
@@ -104,6 +42,9 @@ namespace BuildTool
 
 		public async void Run(string command)
 		{
+			DisableButtons();
+			tbOutputText.Text = string.Empty;
+
 			await Task.Run(() =>
 			{
 				Process p = new Process();
@@ -129,10 +70,10 @@ namespace BuildTool
 				p.StandardInput.Close();
 				p.WaitForExit();
 
-				spButtonsPanel.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal,
+				tcButtons.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal,
 										new Action(delegate ()
 										{
-											spButtonsPanel.IsEnabled = true;
+											tcButtons.IsEnabled = true;
 										}));
 
 			});			
@@ -162,7 +103,7 @@ namespace BuildTool
 
 		private void DisableButtons()
 		{
-			spButtonsPanel.IsEnabled = false;
+			tcButtons.IsEnabled = false;
 		}
 
 		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -176,6 +117,75 @@ namespace BuildTool
 			userPrefs.WindowState = this.WindowState;
 
 			userPrefs.Save();
+		}
+
+		private void CI_Button_Click(object sender, RoutedEventArgs e)
+		{
+			CommandButton button = (CommandButton)sender;
+
+			if (button == null)
+				return;
+
+			Run(string.Format(Properties.Settings.Default.CICommandBase, button.CmdCommand));
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			CommandButton button = (CommandButton)sender;
+
+			if (button == null)
+				return;
+
+			Run(button.CmdCommand);
+		}
+
+		private void CreateProjectButtons()
+		{
+			var topFolders = Directory.GetDirectories($"{Properties.Settings.Default.RepoLocation}\\vrtp_web\\Site\\src");
+
+			var data = topFolders
+				.Where(x => !Path.GetFileName(x).Equals(excludeFolder))
+				.Select(x => new Tuple<string, IList<string>>(Path.GetFileName(x), Directory.GetDirectories(x).Select(y => Path.GetFileName(y)).ToList()))
+				.ToList();
+
+			var scrollViewer = new ScrollViewer() { HorizontalScrollBarVisibility = ScrollBarVisibility.Visible, VerticalScrollBarVisibility = ScrollBarVisibility.Visible };
+
+			var topStackPanel = new StackPanel
+			{
+				Margin = new Thickness(10),
+			};
+
+			scrollViewer.Content = topStackPanel;
+
+			foreach (var item in data)
+			{
+				var groupBox = new GroupBox()
+				{
+					Header = item.Item1
+				};
+
+				var buttonStackPanel = new StackPanel();
+
+				groupBox.Content = buttonStackPanel;
+
+				foreach (var name in item.Item2)
+				{
+					var button = new CommandButton()
+					{
+						Content = name,
+						Margin = new Thickness(10, 5, 10, 0),
+						CmdCommand = string.Format(Properties.Settings.Default.PublishProjectCommand, $"{item.Item1}/{name}")
+					};
+
+					button.Click += Button_Click;
+
+					buttonStackPanel.Children.Add(button);
+				}
+
+				topStackPanel.Children.Add(groupBox);
+			}
+
+			tciProjectButtons.Content = scrollViewer;
 		}
 	}
 }
