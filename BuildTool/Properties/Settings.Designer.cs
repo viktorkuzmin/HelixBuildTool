@@ -12,7 +12,7 @@ namespace BuildTool.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -154,18 +154,6 @@ namespace BuildTool.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("npm run build-no-doc")]
-        public string BuildNoDocComand {
-            get {
-                return ((string)(this["BuildNoDocComand"]));
-            }
-            set {
-                this["BuildNoDocComand"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:/Users/kuzminv-s/AppData/Local/Programs/Git/git-cmd.exe")]
         public string CmdPath {
             get {
@@ -233,6 +221,126 @@ namespace BuildTool.Properties {
             }
             set {
                 this["WindowWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CI-Clean")]
+        public string CICleanComand {
+            get {
+                return ((string)(this["CICleanComand"]));
+            }
+            set {
+                this["CICleanComand"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Publish-Foundation-Projects")]
+        public string CIPublishFoundationComand {
+            get {
+                return ((string)(this["CIPublishFoundationComand"]));
+            }
+            set {
+                this["CIPublishFoundationComand"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Publish-Feature-Projects")]
+        public string CIPublishFeatureComand {
+            get {
+                return ((string)(this["CIPublishFeatureComand"]));
+            }
+            set {
+                this["CIPublishFeatureComand"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Publish-Project-Projects")]
+        public string CIPublishProjectComand {
+            get {
+                return ((string)(this["CIPublishProjectComand"]));
+            }
+            set {
+                this["CIPublishProjectComand"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("gulp {0} --gulpfile gulpfile-ci.js")]
+        public string CICommandBase {
+            get {
+                return ((string)(this["CICommandBase"]));
+            }
+            set {
+                this["CICommandBase"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CI-And-Prepare-Files-DEV")]
+        public string CIDevComand {
+            get {
+                return ((string)(this["CIDevComand"]));
+            }
+            set {
+                this["CIDevComand"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CI-And-Prepare-Files-UAT")]
+        public string CIUatComand {
+            get {
+                return ((string)(this["CIUatComand"]));
+            }
+            set {
+                this["CIUatComand"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CI-And-Prepare-Files-PROD")]
+        public string CIProdComand {
+            get {
+                return ((string)(this["CIProdComand"]));
+            }
+            set {
+                this["CIProdComand"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Feature, Foundation, Project")]
+        public string SrcMainFolders {
+            get {
+                return ((string)(this["SrcMainFolders"]));
+            }
+            set {
+                this["SrcMainFolders"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("gulp Publish-Project -m {0}")]
+        public string PublishProjectCommand {
+            get {
+                return ((string)(this["PublishProjectCommand"]));
+            }
+            set {
+                this["PublishProjectCommand"] = value;
             }
         }
     }

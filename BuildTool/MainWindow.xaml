@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BuildTool"
+		xmlns:properties="clr-namespace:BuildTool.Properties"
         mc:Ignorable="d"
 		Icon="/images.png"
         Title="Build Tool" Height="450" Width="800" Closing="Window_Closing">
+
 	<Grid>
 		<TabControl >
 			<TabItem Header="Run">
@@ -24,36 +26,135 @@
 							FontSize="14"/>
 					</ScrollViewer>
 
-					<StackPanel x:Name="spButtonsPanel" Grid.Column="1" Margin="10">
+					<TabControl x:Name="tcButtons" Grid.Column="1" TabStripPlacement="Bottom">
+						<TabItem Header="Everyday">
+							<StackPanel Margin="10">
+
+								<local:CommandButton  
+									Content="03 Publish All Projects" 
+									Margin="0,0,0,10"  
+									Click="Button_Click" 
+									CmdCommand="{Binding Path=PublishAllProjectsComand, Source={x:Static properties:Settings.Default}}" />
+
+								<StackPanel Margin="40,0,5,5">
+									
+									<local:CommandButton  
+										Content="Build Solution" 
+										Margin="0,0,0,10"  
+										Click="Button_Click" 
+										CmdCommand="{Binding Path=BuildSolutionComand, Source={x:Static properties:Settings.Default}}" />
+
+									<local:CommandButton  
+										Content="Publish Foundation Projects" 
+										Margin="0,0,0,10"  
+										Click="Button_Click" 
+										CmdCommand="{Binding Path=PublishFoundationProjectsComand, Source={x:Static properties:Settings.Default}}" />
+
+									<local:CommandButton  
+										Content="Publish Feature Projects" 
+										Margin="0,0,0,10"  
+										Click="Button_Click" 
+										CmdCommand="{Binding Path=PublishFeatureProjectsComand, Source={x:Static properties:Settings.Default}}" />
+
+									<local:CommandButton  
+										Content="Publish Project Projects" 
+										Margin="0,0,0,10"  
+										Click="Button_Click" 
+										CmdCommand="{Binding Path=PublishProjectProjectsComand, Source={x:Static properties:Settings.Default}}" />
+
+								</StackPanel>
+
+								<local:CommandButton  
+									Content="04 Apply Xml Transform" 
+									Margin="0,0,0,10"  
+									Click="Button_Click" 
+									CmdCommand="{Binding Path=ApplyXmlTransformComand, Source={x:Static properties:Settings.Default}}" />
+
+								<local:CommandButton  
+									Content="05 Sync Unicorn" 
+									Margin="0,0,0,10"  
+									Click="Button_Click" 
+									CmdCommand="{Binding Path=SyncUnicornComand, Source={x:Static properties:Settings.Default}}" />
+
+								<local:CommandButton  
+									Content="07 Copy App" 
+									Margin="0,0,0,10"  
+									Click="Button_Click" 
+									CmdCommand="{Binding Path=CopyAppFilesComand, Source={x:Static properties:Settings.Default}}" />
+
+
+								<StackPanel Margin="10, 30, 10, 10">
+
+									<local:CommandButton  
+										Content="Buld JSX" 
+										Margin="0,0,0,10" 
+										Click="Button_Click" 
+										CmdCommand="{Binding Path=BuildComand, Source={x:Static properties:Settings.Default}}" />
+
+									<local:CommandButton  
+										Content="WATCH" 
+										Margin="0,0,0,10" 
+										Click="Watch_Click" />
+
+								</StackPanel>
 						
-						<Button  Content="03 Publish All Projects" Margin="0,0,0,10"  Click="PublishAllProjects_Click"/>
-						
-						<StackPanel Margin="40,0,5,5">
-							<Button  Content="Build Solution" Margin="0,0,0,10"  Click="BuildSolution_Click"/>
-							<Button  Content="Publish Foundation Projects" Margin="0,0,0,10"  Click="PublishFoundationProjects_Click"/>
-							<Button  Content="Publish Feature Projects" Margin="0,0,0,10"  Click="PublishFeatureProjects_Click"/>
-							<Button  Content="Publish Project Projects" Margin="0,0,0,10"  Click="PublishProjectProjects_Click"/>
-						</StackPanel>
+							</StackPanel>
+						</TabItem>
+						<TabItem Header="CI-CD">
+							<StackPanel Margin="10">
 
-						<Button  Content="04 Apply Xml Transform" Margin="0,0,0,10"  Click="ApplyXmlTransform_Click"/>
+								<local:CommandButton 
+									Content="CI Clean" 
+									Margin="0,0,0,10" 
+									Click="CI_Button_Click" 
+									CmdCommand="{Binding Path=CICleanComand, Source={x:Static properties:Settings.Default}}" />
 
-						<Button  Content="05 Sync Unicorn" Margin="0,0,0,10"  Click="SyncUnicorn_Click"/>
+								<StackPanel Margin="40,0,5,5">
 
-						<Button  Content="07 Copy App" Margin="0,0,0,10"  Click="CopyAppFiles_Click"/>
+									<local:CommandButton  
+										Content="Publish Foundation Projects" 
+										Margin="0,0,0,10" 
+										Click="CI_Button_Click" 
+										CmdCommand="{Binding Path=CIPublishFoundationComand, Source={x:Static properties:Settings.Default}}" />
 
+									<local:CommandButton  
+										Content="Publish Feature Projects" 
+										Margin="0,0,0,10" 
+										Click="CI_Button_Click" 
+										CmdCommand="{Binding Path=CIPublishFeatureComand, Source={x:Static properties:Settings.Default}}" />
 
-						<StackPanel Margin="10, 30, 10, 10">
+									<local:CommandButton  
+										Content="Publish Project Projects" 
+										Margin="0,0,0,10" 
+										Click="CI_Button_Click" 
+										CmdCommand="{Binding Path=CIPublishProjectComand, Source={x:Static properties:Settings.Default}}" />
 
-							<Button  Content="Buld JSX for COMMIT" Margin="0,0,0,10" Click="Build_Click"/>
+								</StackPanel>
 
-							<Button  Content="Buld JSX NO DOC" Margin="0,0,0,10" Click="BuildNoDoc_Click"/>
+								<local:CommandButton 
+									Content="CI And Prepare Files DEV" 
+									Margin="0,0,0,10" 
+									Click="CI_Button_Click" 
+									CmdCommand="{Binding Path=CIDevComand, Source={x:Static properties:Settings.Default}}" />
 
-							<Button  Content="WATCH" Margin="0,0,0,10" Click="Watch_Click" />
+								<local:CommandButton 
+									Content="CI And Prepare Files UAT" 
+									Margin="0,0,0,10" 
+									Click="CI_Button_Click" 
+									CmdCommand="{Binding Path=CIUatComand, Source={x:Static properties:Settings.Default}}" />
 
-						</StackPanel>
-						
-					</StackPanel>
+								<local:CommandButton 
+									Content="CI And Prepare Files PROD" 
+									Margin="0,0,0,10" 
+									Click="CI_Button_Click" 
+									CmdCommand="{Binding Path=CIProdComand, Source={x:Static properties:Settings.Default}}" />
 
+							</StackPanel>
+						</TabItem>
+						<TabItem x:Name="tciProjectButtons" Header="Projects">
+							
+						</TabItem>
+					</TabControl >
 				</Grid>
 			</TabItem>
 			<TabItem Header="Settings">
