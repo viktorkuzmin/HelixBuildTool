@@ -32,8 +32,11 @@
     <Setting Name="GitBashPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:/Users/kuzminv-s/AppData/Local/Programs/Git/git-cmd.exe</Value>
     </Setting>
-    <Setting Name="BuildComand" Type="System.String" Scope="User">
-      <Value Profile="(Default)">npm run build</Value>
+    <Setting Name="BuildCommand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">npm run build - Production</Value>
+    </Setting>
+    <Setting Name="BuildDebugCommand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">npm run build - Debug</Value>
     </Setting>
     <Setting Name="CmdPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:/Users/kuzminv-s/AppData/Local/Programs/Git/git-cmd.exe</Value>
