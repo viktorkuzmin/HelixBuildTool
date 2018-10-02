@@ -12,7 +12,7 @@ namespace BuildTool.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.1.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -142,13 +142,25 @@ namespace BuildTool.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("npm run build")]
-        public string BuildComand {
+        [global::System.Configuration.DefaultSettingValueAttribute("npm run build - Production")]
+        public string BuildCommand {
             get {
-                return ((string)(this["BuildComand"]));
+                return ((string)(this["BuildCommand"]));
             }
             set {
-                this["BuildComand"] = value;
+                this["BuildCommand"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("npm run build - Debug")]
+        public string BuildDebugCommand {
+            get {
+                return ((string)(this["BuildDebugCommand"]));
+            }
+            set {
+                this["BuildDebugCommand"] = value;
             }
         }
         
